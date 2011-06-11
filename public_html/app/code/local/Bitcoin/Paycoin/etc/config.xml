@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<config>
+      <modules>
+        <Bitcoin_Paycoin>
+          <version>0.1.0</version>
+          <active>true</active>
+          <codePool>local</codePool>
+          <depends><Mage_Payment /></depends>
+        </Bitcoin_Paycoin>
+      </modules>
+    <frontend>
+      <routers>
+        <paycoin>
+          <use>standard</use>
+         <args>
+           <module>Bitcoin_Paycoin_Block</module>
+           <frontName>paycoin</frontName>
+         </args>
+        </paycoin>
+      </routers>
+	  <layout>
+          <updates>
+              <paycoin>
+                  <file>paycoin.xml</file>
+              </paycoin>
+          </updates>
+      </layout>
+    </frontend>
+   <global>   
+      <blocks>   
+         <paycoin><class>Bitcoin_Paycoin_Block</class></paycoin>   
+      </blocks>  
+<!-- declare model group for new module -->
+        <models>
+<!-- model group alias to be used in Mage::getModel('newmodule/...') -->
+            <paycoin>
+<!-- base class name for the model group -->
+                <class>Bitcoin_Paycoin_Model</class>
+            </paycoin>
+        </models>
+ 
+<!-- declare resource setup for new module -->
+        <resources>
+<!-- resource identifier -->
+            <paycoin_setup>
+<!-- specify that this resource is a setup resource and used for upgrades -->
+                <setup>
+<!-- which module to look for install/upgrade files in -->
+                    <module>Bitcoin_Paycoin</module>
+                </setup>
+<!-- specify database connection for this resource -->
+                <connection>
+<!-- do not create new connection, use predefined core setup connection -->
+                    <use>core_setup</use>
+                </connection>
+            </paycoin_setup>
+            <paycoin_write>
+                <connection>
+                  <use>core_write</use>
+                </connection>
+            </paycoin_write>
+            <paycoin_read>
+               <connection>
+                <use>core_read</use>
+              </connection>
+            </paycoin_read>
+        </resources>  
+       <events>
+            <sales_order_save_before>
+                <observers>
+                    <payment_sales_order_save_before>
+                        <class>paycoin/observer</class>
+                        <method>salesOrderBeforeSave</method>
+                    </payment_sales_order_save_before>
+                </observers>
+            </sales_order_save_before>
+        </events>     
+   </global> 
+<!-- declare default configuration values for this module -->
+    <default>
+<!-- 'payment' configuration section (tab) -->
+        <payment>
+<!-- 'newmodule' configuration group (fieldset) -->
+            <paycoin>
+<!-- by default this payment method is inactive -->
+                <active>1</active>
+<!-- model to handle logic for this payment method -->
+                <model>paycoin/paycoin</model>
+<!-- order status for new orders paid by this payment method -->
+                <order_status>pending</order_status>
+<!-- default title for payment checkout page and order view page -->
+                <title>Bitcoin</title>
+                <allowspecific>1</allowspecific>
+            </paycoin>
+         </payment>
+    </default>     
+</config> 

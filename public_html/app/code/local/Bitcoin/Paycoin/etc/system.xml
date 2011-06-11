@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config>
+   <sections>
+<!-- payment tab -->
+        <payment>
+            <groups>
+<!-- newmodule fieldset -->
+                <paycoin translate="label" module="paygate">
+<!-- will have title 'New Module' -->
+                    <label>Bitcoin Paycoin</label>
+<!-- position between other payment methods -->
+                    <sort_order>670</sort_order>
+<!-- do not show this configuration options in store scope -->
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+<!-- is this payment method active for the website? -->
+                        <active translate="label">
+<!-- label for the field -->
+                            <label>Enabled</label>
+<!-- input type for configuration value -->
+                            <frontend_type>select</frontend_type>
+<!-- model to take the option values from -->
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+<!-- field position -->
+                            <sort_order>1</sort_order>
+<!-- do not show this field in store scope -->
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <order_status translate="label">
+                            <label>New order status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_status>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </title>
+                        <rpcurl translate="label">
+                            <label>RPC Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </rpcurl>                                      
+                    </fields>
+                </paycoin>
+            </groups>
+        </payment>
+    </sections>
+</config>
