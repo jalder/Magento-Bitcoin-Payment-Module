@@ -1,4 +1,4 @@
-Please folders in public_html into your webroot.
+Place folders in public_html into your webroot.
 
 Enable the payment gateway in magento admin and enter your bitcoin rpc url.
 
