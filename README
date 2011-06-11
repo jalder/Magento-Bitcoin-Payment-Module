@@ -3,3 +3,9 @@ Place folders in public_html into your webroot.
 Enable the payment gateway in magento admin and enter your bitcoin rpc url.
 
 URL takes the form of: http://username:password@hostname:port
+
+I'm a hungry developer. Donations can be made to 1GLXbvBtipcPkJ2UhMp4y3pY5i1kNYD9Bt
+
+Please log all feature requests and issues in github. 
+
+https://github.com/jalder/Magento-Bitcoin-Payment-Module
